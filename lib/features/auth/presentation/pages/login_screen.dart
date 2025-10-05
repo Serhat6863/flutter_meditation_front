@@ -55,118 +55,111 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthCubit, AuthStates>(
-      listener: (context, state){
-        if(state is Authenticated){
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const BottomNavigation()));
-        }else if(state is AuthError){
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.message)));
-        }
-      },
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () => Navigator.pop(context),
-          ),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.pop(context),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(24.0),
-          //center the content
-          child: Column(
-            children: [
-              const Text(
-                'Welcome Back!',
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(24.0),
+        //center the content
+        child: Column(
+          children: [
+            const Text(
+              'Welcome Back!',
+              style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
+            ),
 
-              const SizedBox(height: 40),
+            const SizedBox(height: 40),
 
-              const Text(
-                'LOG IN WITH EMAIL',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey,
-                  letterSpacing: 1.0,
-                ),
+            const Text(
+              'LOG IN WITH EMAIL',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.grey,
+                letterSpacing: 1.0,
               ),
+            ),
 
-                const SizedBox(height: 20),
-
-              // Email TextField
-              MyTextField(controller: emailController, hintText: 'Email address', obscureText: false),
-
-              const SizedBox(height: 16),
-
-              // Password TextField
-              MyTextField(controller: passwordController, hintText: 'Password', obscureText: true),
-
-              const SizedBox(height: 24),
-
-              // Login Button
-              MyButton(
-                text: 'LOG IN',
-                onPressed: () {
-                  // Login user
-                  login();
-                },
-                textColor: Colors.white,
-                backgroundColor: const Color(0xFF7583CA),
-              ),
-
-              const SizedBox(height: 16),
-
-
-
-              // Forgot Password
-              Center(
-                child: TextButton(
-                  onPressed: () {
-                    // Navigate to forgot password screen
-                  },
-                  child: const Text(
-                    'Forgot Password?',
-                    style: TextStyle(
-                      color: Colors.black87,
-                      fontSize: 14,
-                    ),
-                  ),
-                ),
-              ),
-
-              const Spacer(),
-
-              // Sign Up Link
-              Center(
-                child: RichText(
-                  text: const TextSpan(
-                    text: "DON'T HAVE AN ACCOUNT? ",
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 14,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: 'SIGN UP',
-                        style: TextStyle(
-                          color: Color(0xFF7583CA),
-                          decoration: TextDecoration.underline,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
               const SizedBox(height: 20),
-            ],
-          ),
+
+            // Email TextField
+            MyTextField(controller: emailController, hintText: 'Email address', obscureText: false),
+
+            const SizedBox(height: 16),
+
+            // Password TextField
+            MyTextField(controller: passwordController, hintText: 'Password', obscureText: true),
+
+            const SizedBox(height: 24),
+
+            // Login Button
+            MyButton(
+              text: 'LOG IN',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const BottomNavigation()),
+                );
+              },
+              textColor: Colors.white,
+              backgroundColor: const Color(0xFF7583CA),
+            ),
+
+            const SizedBox(height: 16),
+
+
+
+            // Forgot Password
+            Center(
+              child: TextButton(
+                onPressed: () {
+                  // Navigate to forgot password screen
+                },
+                child: const Text(
+                  'Forgot Password?',
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontSize: 14,
+                  ),
+                ),
+              ),
+            ),
+
+            const Spacer(),
+
+            // Sign Up Link
+            Center(
+              child: RichText(
+                text: const TextSpan(
+                  text: "DON'T HAVE AN ACCOUNT? ",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 14,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: 'SIGN UP',
+                      style: TextStyle(
+                        color: Color(0xFF7583CA),
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+          ],
         ),
       ),
     );

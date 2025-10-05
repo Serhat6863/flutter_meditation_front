@@ -24,28 +24,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AuthCubit()..checkAuth(),
-      child: MaterialApp(
+      child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: BlocConsumer<AuthCubit,AuthStates>(
-          builder: (context, state){
-            if(state is AuthLoading){
-              return const Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              );
-            }else if(state is Authenticated){
-              return const BottomNavigation();
-            }else{
-              return const OnboardingScreen();
-            }
-          },
-          listener: (context,state){
-            if(state is AuthError){
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.message)));
-            }
-          },
-        ),
+        home: OnboardingScreen()
       ),
     );
   }
