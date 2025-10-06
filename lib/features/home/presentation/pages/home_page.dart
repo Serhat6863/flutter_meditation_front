@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:meditation/core/constants/app_constant.dart';
 import 'package:meditation/features/auth/presentation/bloc/auth_cubit.dart';
-import 'package:meditation/features/home/presentation/widget/carrousel_slider.dart';
-
+import 'package:meditation/features/auth/presentation/pages/login_screen.dart';
 import '../widget/my_bloc.dart';
 
 class HomePage extends StatefulWidget {
@@ -52,7 +50,11 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             onPressed: () {
-              authCubit.logout();
+              //authCubit.logout();
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginScreen()),
+              );
             },
             icon: const Icon(
               Icons.logout,

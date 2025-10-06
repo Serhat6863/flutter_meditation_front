@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meditation/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:meditation/core/widgets/bottom_navigation.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-import '../../../home/presentation/pages/home_page.dart';
-import '../bloc/auth_state.dart';
 import '../widget/my_button.dart';
 import '../widget/my_text_field.dart';
 
@@ -60,10 +57,6 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(24.0),

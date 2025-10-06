@@ -65,7 +65,7 @@ class OnboardingScreen extends StatelessWidget {
               MyButton(
                 text: 'SIGN UP',
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterScreen()));
                 },
                 textColor: Colors.white,
               ),
@@ -76,7 +76,7 @@ class OnboardingScreen extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   // Navigation vers Login
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
                 },
                 child: RichText(
                   text: const TextSpan(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meditation/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:meditation/features/auth/presentation/pages/login_screen.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:meditation/features/home/presentation/pages/home_page.dart';
 import '../bloc/auth_state.dart';
 import '../widget/my_button.dart';
 import '../widget/my_text_field.dart';
@@ -161,8 +161,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
               MyButton(
                 text: 'SIGN UP',
                 onPressed: () {
-                  // Login user
-                  register();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomePage())
+                  );
                 },
                 textColor: Colors.white,
                 backgroundColor: const Color(0xFF7583CA),
